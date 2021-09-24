@@ -1,0 +1,79 @@
+// Determine the user's choice between rock, paper, and scissors.
+const getUserChoice = userInput => {
+  userInput = userInput.toLowerCase();
+  if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors' || userInput === 'bomb') {
+    return userInput;
+  } else {
+    console.log('Error: Please doublecheck your input.');
+  }
+}
+
+// Determine the computer's choice between rock, paper, and scissors.
+const getComputerChoice = () => {
+  computerInput = Math.floor(Math.random() * 3);
+  if (computerInput === 0) {
+    computerInput = 'rock';
+  } else if (computerInput === 1) {
+    computerInput = 'paper';
+  } else {
+    computerInput = 'scissors'
+  }
+  return computerInput;
+}
+
+// Determine who the winner of the game is.
+const determineWinner = (userChoice, computerChoice) => {
+  if (userChoice === 'bomb') {
+    let winner = 'The user unlocked the secret code bomb and wins the game.'
+    return winner;
+  }
+  
+  if (userChoice === computerChoice) {
+    let winner = 'The game was a tie.';
+    return winner;
+  }
+
+  if (userChoice === 'rock') {
+    if (computerChoice === 'paper') {
+      let winner = 'The computer wins.';
+      return winner;
+    } else {
+      let winner = 'The user wins.';
+      return winner;
+    }
+  }
+
+  if (userChoice === 'paper') {
+    if (computerChoice === 'scissors') {
+      let winner = 'The computer wins.';
+      return winner;
+    } else {
+      let winner = 'The user wins.';
+      return winner;
+    }
+  }
+
+  if (userChoice === 'scissors') {
+    if (computerChoice === 'rock') {
+      let winner = 'The computer wins.';
+      return winner;
+    } else {
+      let winner = 'The user wins.';
+      return winner;
+    }
+  }
+}
+
+// Determine how the game of Rock, Paper, Scissors is played.
+const playGame = () => {
+  const userChoice = getUserChoice('Rock');
+  const computerChoice = getComputerChoice();
+
+  console.log(`The user picked ${userChoice}.`);
+  console.log(`The computer picked ${computerChoice}.`);
+
+  console.log(determineWinner(userChoice, computerChoice));
+}
+
+// Call the function playGame to simulate the game of Rock, Paper, Scissors.
+playGame();
